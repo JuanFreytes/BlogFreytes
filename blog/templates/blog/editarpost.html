@@ -1,0 +1,15 @@
+{% extends 'blog/index.html' %}
+
+
+{%block cuerpo%}
+<p>
+<p>
+    <form action={% url 'editarpost' post.id %} method="post">
+        {% csrf_token %}
+
+        <table>
+            {{formulario.as_table}}
+        </table>
+        <input type="submit" placeholder="Actualizar">
+    </form>
+{%endblock cuerpo%}

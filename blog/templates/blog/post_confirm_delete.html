@@ -1,0 +1,12 @@
+{% extends 'blog/index.html' %}
+
+
+{%block cuerpo%}
+<p>
+<p>
+    <form method="post">
+        {% csrf_token %}
+        Confirma el borrado de este elemento?
+        <input type="submit" value="Confirmo">
+    </form>
+{%endblock cuerpo%}

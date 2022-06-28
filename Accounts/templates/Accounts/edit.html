@@ -1,0 +1,17 @@
+{% extends 'blog/index.html' %}
+
+{%block cuerpo%}
+<p>
+    {% if msj %}
+        {{msj}}
+    {% endif %}
+</p>
+
+<form action={% url 'edit_user' %} method="post" enctype='multipart/form-data'>
+    {% csrf_token %}
+    <table>
+        {{form.as_table}}
+    </table>
+    <button>Guardar cambios</button>
+</form>
+{%endblock cuerpo%}
