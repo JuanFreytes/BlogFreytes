@@ -19,24 +19,23 @@
     <img src="{{object.imagen.url}}" alt="imagen de perfil" width= "300" height= "300">
 
 
-    
-    <hr>
+<h3>Comentarios...</h3>
+{% if not.post.comments.all %}
+    Aún no hay comentarios... <a href="#">
+        Agrega uno!</a>
+{% else %}
+<a href="{% url 'add_comment' post.pk %} ">Agrega un comentario</a>
+<br><br>
+    {% for comment in post.comments.all %}
+    <strong>
+        {{ comment.author }} - 
+        {{ comment.created_date }}
+    </strong>
+    <br>
+    {{ comment.text }}
+    {% endfor %}
+{% endif %}    
+            
 
-    <div data-gb-custom-block data-tag="for"></div>
-    
-        <div class="comment">
-            <div class="date">{{ comment.created_date }}</div>
-            <strong>{{ comment.author }}</strong>
-            <p>{{ comment.text|linebreaks }}</p>
-        </div>
-    
-    <div data-gb-custom-block data-tag="empty">
-    
-        <p>Aún no hay comentarios, Sé el primero!</p>
-    
-    </div>  
-    
-    <hr>
-    <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Click acá para Agregar tu Comentario</a>
-    <hr>  
+
 {%endblock cuerpo%}

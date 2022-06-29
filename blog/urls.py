@@ -1,5 +1,5 @@
-from django.urls import path, re_path
-from .views import index
+from django.urls import path
+from .views import index, AddCommentView
 from . import views
 
 urlpatterns = [
@@ -10,5 +10,5 @@ urlpatterns = [
     path('crearpost/<int:pk>',views.PostDetailView.as_view(), name= 'postdetail'),
     path('editarpost/<int:pk>/editar/',views.PostUpdateView.as_view(), name='editarpost'),
     path('borrarpost/<int:pk>/borrar/',views.PostDeleteView.as_view(),name='borrarpost'),
-    re_path(r'^post/(?P<pk>\d+)/comment/$', views.add_comment_to_post, name='add_comment_to_post'),
+    path('comment/<int:pk>/comment/',AddCommentView.as_view(), name= 'add_comment'),
 ]  

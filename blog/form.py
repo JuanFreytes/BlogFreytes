@@ -1,6 +1,6 @@
 from django import forms
 from ckeditor.fields import RichTextFormField
-from .models import Comment
+
 
 
 class PostForm (forms.Form):
@@ -10,7 +10,3 @@ class PostForm (forms.Form):
     fecha_creacion = forms.DateTimeField()
     imagen = forms.ImageField()
 
-class CommentForm(forms.ModelForm):
-    class Meta:
-        model = Comment
-        fields = ('name', 'email', 'body')
